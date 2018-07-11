@@ -2,7 +2,7 @@
   <div 
     :style="{paddingBottom:bottom+'px'}" 
     class="Panel">
-    <h1 v-if="title" >- {{ title }} -</h1>
+    <h1 v-if="title" :class="{leftTitle:mode==='left'}" class="Title">{{ comTitle }}</h1>
     <div 
       v-if="more"  
       class="more">{{ more }}</div>
@@ -16,22 +16,41 @@ export default {
     'title',
     'more',
     'bottom',
+    'mode',
   ],
+  data(){
+    return {
+      fontSize:'',
+    }
+  },
+  computed:{
+    comTitle(){
+      let title 
+      title = this.mode==='left'?this.title:`- ${this.title} -`
+      return title
+    },
+  },
 }
 </script>
 
 <style lang="scss" scoped>
 .Panel {
+  box-sizing: border-box;
   width: 100%;
   position: relative;
   background: #ffffff;
   margin-bottom: 10px;
-  h1 {
+  .Title {
     text-align: center;
     font-size: 16px;
     font-weight: 700;
     height: 56px;
     line-height: 56px;
+  }
+  .leftTitle {
+    text-align: left;
+    // padding-left: 15px;
+    font-size: 18px;
   }
   .more {
     position: absolute;

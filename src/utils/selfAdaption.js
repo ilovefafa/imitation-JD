@@ -1,4 +1,4 @@
-let selfAdaption = function () {
+export default function () {
   const html = document.getElementsByTagName('html')[0]
   const width = document.documentElement.clientWidth
   html.style.fontSize = 40 * (width / 320) + "px";
@@ -7,5 +7,4 @@ let selfAdaption = function () {
     html.style.fontSize = 40 * (width / 320) + "px";
   }
 }
-selfAdaption()
 

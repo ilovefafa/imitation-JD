@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import { throttle, debounce } from 'throttle-debounce';
 export default {
   data(){
     return {
@@ -12,9 +13,10 @@ export default {
     }
   },
   mounted(){
-    window.addEventListener('scroll',()=>{
-      this.show=document.documentElement.scrollTop||document.body.scrollTop>400 ?true:false
+    let action = throttle(300,false,()=>{
+      this.show=(document.documentElement.scrollTop||document.body.scrollTop)>400 ?true:false
     })
+    window.addEventListener('scroll',action)
   },
   methods:{
     goTop(){

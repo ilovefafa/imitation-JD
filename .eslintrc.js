@@ -2,7 +2,8 @@ module.exports = {
     extends: [
         // add more generic rulesets here, such as:
         'eslint:recommended',
-        'plugin:vue/recommended'
+        'plugin:vue/recommended',
+        // "plugin:prettier/recommended",
     ],
     rules: {
         // override/add rules settings here, such as:
@@ -13,5 +14,9 @@ module.exports = {
         "vue/html-self-closing": ["never"],
         "vue/require-prop-types": ["never"],
         "vue/max-attributes-per-line": ["never"],
+        // "prettier/prettier": ["error", {
+        //     "trailingComma": "all",
+        //     "singleQuote": true
+        // }]
     }
 }

@@ -11,13 +11,16 @@
 import TheHeader from './components/TheHeader.vue'
 import GoToTop from './components/GoToTop.vue'
 import BottomNav from './components/BottomNav.vue'
-
+import selfAdaption from './utils/selfAdaption'
 export default {
   components:{
     TheHeader,
     GoToTop,
     BottomNav,
   },
+  mounted(){
+  selfAdaption()
+  }
 }
 </script>
 

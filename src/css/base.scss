@@ -1,14 +1,20 @@
   body {
-    background: #f5f5f5;
-    // font-family: "PingHei","Lucida Grande","Lucida Sans Unicode","STHeiti","Helvetica","Arial","Verdana","sans-serif";
-   font-family: PingFangSC-Regular,Arial,"Helvetica Neue",Helvetica,sans-serif;
-   font-size: 14px;
-   line-height: 1.2;
+      background: #f5f5f5; // font-family: "PingHei","Lucida Grande","Lucida Sans Unicode","STHeiti","Helvetica","Arial","Verdana","sans-serif";
+      font-family: PingFangSC-Regular, Arial, "Helvetica Neue", Helvetica, sans-serif;
+      font-size: 14px;
+      line-height: 1.2;
   }
-img{
-  width: 100%;
-  display: block;
-}
-a{
-  text-decoration: none;
-}
+
+  img {
+      width: 100%;
+      display: block;
+  }
+
+  a {
+      text-decoration: none;
+  }
+
+  @font-face {
+      font-family: 'DIN--BOLD';
+      src: url(./font/DINBold.ttf) format('truetype');
+  }

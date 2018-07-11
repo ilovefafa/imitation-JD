@@ -11,7 +11,6 @@
       </div>
     </div>
     <slider 
-      :swiper-option="sliderOption" 
       :slide-data="sliderData"
     ></slider>
     <div class="iconic-nav">
@@ -36,9 +35,7 @@
         <img src="https://img12.360buyimg.com/jrpmobile/jfs/t23095/339/640414013/48531/7d7396cf/5b39e732N85f572ea.jpg?width=750&height=246">
       </div>
     </div>
-    <panel 
-      title="理财精选" 
-    >
+    <panel title="理财精选" >
       <div class="finance-product">
         <div class="single">
           <div class="title">
@@ -79,16 +76,16 @@
       more="更多尖货"
       bottom="20">
       <slider
-        :swiper-option="sliderOptionFunding"
         :slide-data="sliderDataFunding"
+        mode="freeMode"
       ></slider>
     </panel>
     <panel 
       title="保险保障"
       bottom="20">
       <slider
-        :swiper-option="sliderOptionInsurance"
         :slide-data="sliderDataInsurance"
+        mode="freeMode"
       ></slider>
     </panel>
     <panel 
@@ -158,88 +155,79 @@
         <p>京东金融隐私政策</p>
       </div>
     </div>
+   
   </div>
   
 </template>
 
 <script>
-import Slider from './components/Slider.vue'
-import Panel from './components/Panel.vue'
+import Slider from './components/Slider.vue';
+import Panel from './components/Panel.vue';
+import {square} from '.././utils/math.js';
 export default {
-  components:{
+  mounted(){
+let a = square(3)
+return a
+  },
+  components: {
     Slider,
     Panel,
   },
-  data(){
+  data() {
     return {
-      sliderOption:{
-        speed:1000,
-        autoplay:{
-          disableOnInteraction:false,
-        },
-        loop:'true',
-        pagination: 
-             {
-               el: '.swiper-pagination',
-             }, 
-      },
-      sliderOptionFunding:{
-        freeMode:true,
-        slidesPerView : 2.5,
-        spaceBetween : 12,
-        slidesOffsetBefore : 12,
-        slidesOffsetAfter : 12,
-      },
-      sliderOptionInsurance:{
-        freeMode:true,
-        slidesPerView : 2.5,
-        spaceBetween : 12,
-        slidesOffsetBefore : 12,
-        slidesOffsetAfter : 12,
-      },
-      sliderDataFunding:[
+      sliderDataFunding: [
         {
-          url:"https://img12.360buyimg.com/jrpmobile/jfs/t20368/53/1699227456/59616/e6a80ca4/5b30a580N130c8dfc.jpg?width=335&height=421",
+          url:
+            'https://img12.360buyimg.com/jrpmobile/jfs/t20368/53/1699227456/59616/e6a80ca4/5b30a580N130c8dfc.jpg?width=335&height=421',
         },
         {
-          url:"https://img12.360buyimg.com/jrpmobile/jfs/t23338/182/473320295/44592/4835b8d8/5b30a593N32e80321.jpg?width=335&height=421",
+          url:
+            'https://img12.360buyimg.com/jrpmobile/jfs/t23338/182/473320295/44592/4835b8d8/5b30a593N32e80321.jpg?width=335&height=421',
         },
         {
-          url:"https://img12.360buyimg.com/jrpmobile/jfs/t23323/199/462493049/28263/3d0f7cbf/5b30a5a5N3dec8fdc.jpg?width=335&height=421",
+          url:
+            'https://img12.360buyimg.com/jrpmobile/jfs/t23323/199/462493049/28263/3d0f7cbf/5b30a5a5N3dec8fdc.jpg?width=335&height=421',
         },
       ],
-      sliderDataInsurance:[
+      sliderDataInsurance: [
         {
-          url:"https://img12.360buyimg.com/jrpmobile/jfs/t12355/171/849656870/29064/92c9bc12/5a153643N04efba6e.jpg?width=210&height=260",
+          url:
+            'https://img12.360buyimg.com/jrpmobile/jfs/t12355/171/849656870/29064/92c9bc12/5a153643N04efba6e.jpg?width=210&height=260',
         },
         {
-          url:'https://img12.360buyimg.com/jrpmobile/jfs/t9697/338/291348712/12737/27e1204/59cb6304Naef85042.jpg?width=210&height=260',
+          url:
+            'https://img12.360buyimg.com/jrpmobile/jfs/t9697/338/291348712/12737/27e1204/59cb6304Naef85042.jpg?width=210&height=260',
         },
         {
-          url:'https://img12.360buyimg.com/jrpmobile/jfs/t10360/347/311063647/10881/14a5cd40/59cb632fNcac82571.jpg?width=210&height=260',
+          url:
+            'https://img12.360buyimg.com/jrpmobile/jfs/t10360/347/311063647/10881/14a5cd40/59cb632fNcac82571.jpg?width=210&height=260',
         },
         {
-          url:'https://img12.360buyimg.com/jrpmobile/jfs/t13927/226/2090083878/14208/2746192a/5a31dde6Nbba7f26c.png?width=210&height=260',
+          url:
+            'https://img12.360buyimg.com/jrpmobile/jfs/t13927/226/2090083878/14208/2746192a/5a31dde6Nbba7f26c.png?width=210&height=260',
         },
         {
-          url:'https://img12.360buyimg.com/jrpmobile/jfs/t9703/119/296348375/11253/b9bc3ce7/59cb637dNf25b0dff.jpg?width=210&height=260',
-        },
-      ],
-      sliderData:[
-        {
-          url:"https://img12.360buyimg.com/jrpmobile/jfs/t20758/100/1927641061/42355/56c96026/5b3cb490N65d71875.jpg?width=750&height=320",
-
-        },
-        {
-          url:"https://img12.360buyimg.com/jrpmobile/jfs/t22828/316/643081491/38351/aeacfb66/5b3a0166N5b9aaef2.jpg?width=750&height=320",
-        },
-        {
-          url:"https://img12.360buyimg.com/jrpmobile/jfs/t22648/2/639513559/47403/beab48b1/5b3a01a3Naf2f7390.jpg?width=750&height=320",
+          url:
+            'https://img12.360buyimg.com/jrpmobile/jfs/t9703/119/296348375/11253/b9bc3ce7/59cb637dNf25b0dff.jpg?width=210&height=260',
         },
       ],
-    }
+      sliderData: [
+        {
+          url:
+            'https://img12.360buyimg.com/jrpmobile/jfs/t20758/100/1927641061/42355/56c96026/5b3cb490N65d71875.jpg?width=750&height=320',
+        },
+        {
+          url:
+            'https://img12.360buyimg.com/jrpmobile/jfs/t22828/316/643081491/38351/aeacfb66/5b3a0166N5b9aaef2.jpg?width=750&height=320',
+        },
+        {
+          url:
+            'https://img12.360buyimg.com/jrpmobile/jfs/t22648/2/639513559/47403/beab48b1/5b3a01a3Naf2f7390.jpg?width=750&height=320',
+        },
+      ],
+    };
   },
-}
+};
 </script>
 
 <style lang='scss' scoped>
@@ -266,19 +254,19 @@ export default {
           float: left;
           &:nth-child(1) {
             &:before {
-              content: "";
+              content: '';
               padding-left: 0;
             }
           }
           &:before {
-            content: "|";
+            content: '|';
             padding: 0 5px;
           }
         }
       }
       .img {
         position: absolute;
-        background: url("//m.jr.jd.com/spe/qyy/main/images/jr-logo.png")
+        background: url('//m.jr.jd.com/spe/qyy/main/images/jr-logo.png')
           no-repeat no-repeat center center;
         background-size: 100%;
         width: 105px;
@@ -348,7 +336,7 @@ export default {
       position: relative;
       &:nth-child(odd) {
         &::after {
-          content: "";
+          content: '';
           width: 1px;
           height: 68px;
           background-color: #eee;
@@ -435,7 +423,6 @@ export default {
     }
   }
   .footer {
-    margin-bottom: 60px;
     .view-pattern {
       padding-top: 20px;
       display: flex;
@@ -467,7 +454,7 @@ export default {
           position: absolute;
           left: 0;
           top: 0;
-          content: "";
+          content: '';
           display: block;
           height: 1px;
           width: 200%;

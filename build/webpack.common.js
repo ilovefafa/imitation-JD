@@ -6,11 +6,17 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 module.exports = {
   entry: {
     app: './src/index.js',
-    selfAdaption: './src/utils/selfAdaption.js',
+    // selfAdaption: './src/utils/selfAdaption.js',
   },
   output: {
     path: path.resolve(__dirname, '../dist'),
     filename: '[name].buddle.js',
+  },
+  resolve: {
+    alias: {
+      '@images': path.resolve(__dirname, '../src/assets/images/')
+    },
+    extensions: [".js", ".json", ".vue"]
   },
   module: {
     rules: [
@@ -41,13 +47,20 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }, {
-          loader: 'px2rem-loader',
-          options: {
-            remUnit: 40,
-            remPrecision: 8
-          }
-        }, { loader: 'sass-loader' }],
+        use: [
+          { loader: 'style-loader' },
+          {
+            loader: 'css-loader',
+          },
+          {
+            loader: 'px2rem-loader',
+            options: {
+              remUnit: 40,
+              remPrecision: 8
+            }
+          },
+          { loader: 'sass-loader' }
+        ],
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
