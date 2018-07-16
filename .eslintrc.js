@@ -5,7 +5,13 @@ module.exports = {
         'plugin:vue/recommended',
         // "plugin:prettier/recommended",
     ],
+    "parserOptions": {
+        "parser": "babel-eslint",
+        "ecmaVersion": 2017,
+        "sourceType": "module"
+    },
     rules: {
+        "strict": 0,
         // override/add rules settings here, such as:
         // 'vue/no-unused-vars': 'error'
         'vue/html-indent': ['error', 2],

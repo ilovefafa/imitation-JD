@@ -1,8 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-// const webpack = require('webpack');
 module.exports = {
   entry: {
     app: './src/index.js',
@@ -10,6 +8,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, '../dist'),
     filename: '[name].[chunkhash:7].buddle.js',
+    chunkFilename: 'chunk[id].js?[chunkhash]',
   },
   resolve: {
     alias: {
@@ -29,6 +28,7 @@ module.exports = {
           loader: 'babel-loader?cacheDirectory=true',
           options: {
             presets: ['@babel/preset-env'],
+            plugins: ["syntax-dynamic-import"]
           },
         },
       },
@@ -36,7 +36,6 @@ module.exports = {
         test: /\.css$/,
         use: ['style-loader', 'css-loader', {
           loader: 'px2rem-loader',
-          // options here
           options: {
             remUnit: 40,
             remPrecision: 8
@@ -45,18 +44,22 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }, {
-          loader: 'px2rem-loader',
-          options: {
-            remUnit: 40,
-            remPrecision: 8
-          }
-        }, { loader: 'sass-loader' }],
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'px2rem-loader',
+            options: {
+              remUnit: 40,
+              remPrecision: 8
+            }
+          },
+          'sass-loader'
+        ],
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
         use: [
-          'file-loader',
           {
             loader: 'image-webpack-loader',
             options: {
@@ -64,20 +67,29 @@ module.exports = {
               disable: false, // webpack@2.x and newer
             },
           },
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+              outputPath: 'images/'
+            }
+          },
         ],
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         use: [
-          'file-loader',
+          {
+            loader: 'file-loader',
+            options: {
+              outputPath: 'font/'
+            }
+          }
         ],
       },
     ],
   },
   plugins: [
-    new CleanWebpackPlugin(['dist'], {
-      root: path.resolve(__dirname)
-    }),
     new HtmlWebpackPlugin({
       title: 'i am fan',
       template: './src/index.html',
