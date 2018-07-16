@@ -1,6 +1,6 @@
 <template>
   <div v-if="show" class="top" @click="goTop">
-    <img src="//m.jr.jd.com/spe/qyy/main/images/go_top.png" alt="">
+    <img src="http://m.jr.jd.com/spe/qyy/main/images/go_top.png" alt="">
   </div>
 </template>
 

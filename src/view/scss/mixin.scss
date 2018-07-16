@@ -1,19 +1,24 @@
-@mixin rowNav($padding:10px) {
+@mixin rowNav ( $padding:10px, $flex-wrap:nowrap, $imgWidth:45px, $imgHeight:45px, $fontSize:13px, $marginTop:7px, $divHeight:auto, $divWidth:auto, $imgMarginTop:0, $imgMarginBottom:0) {
     padding: $padding 0; // padding-bottom: 5px;
     display: flex;
     text-align: center;
-    div {   
-
-    position: relative;
+    flex-wrap: $flex-wrap;
+    div {
+        width: $divWidth;
+        height: $divHeight;
+        position: relative;
         img {
-      margin: 0 auto;
-            width: 45px;
-            height: 45px;
+            margin: $imgMarginTop auto $imgMarginBottom auto;
+            width: $imgWidth;
+            height: $imgHeight;
         }
         p {
-            font-size: 13px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-size: $fontSize;
             color: #666;
-            margin-top: 7px;
+            margin-top: $marginTop;
         }
         margin: 0 auto;
         span {
@@ -30,4 +35,19 @@
             background-size: contain;
         }
     }
+}
+
+@mixin boxShadow() {
+    box-shadow: 0 0 0.625rem 0.03125rem rgba(101, 118, 155, 0.15);
+}
+
+@mixin centerFont($height:12px) {
+    height: $height;
+    line-height: $height;
+}
+
+@mixin singleOmit() {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="vertical">
     <div 
-      v-for="(item,index) in data" 
+      v-for="item in data" 
       :key="item.url" 
       class="vertical-item"
     >
@@ -26,13 +26,16 @@ export default {
       isActive:false,
     }
   },
-  computed:{
-offsetWidth(){
-
-}
-  },
-  watch:{
-  
+  mounted(){
+    this.$nextTick(()=>{
+      this.setTimer()
+      this.setItemPosition()
+      // console.log(this.$el.offsetHeight)
+    })
+    // var ro = new ResizeObserver( () => {
+    //   this.setItemPosition()
+    // });
+    // ro.observe(this.$el);
   },
 
   methods:{
@@ -52,14 +55,13 @@ offsetWidth(){
     },
     setItemPosition(){  
       let offsetHeight
-      let differenceValue
       let activeIndex = this.activeIndex
       let muti = 0
       let childNodes = Array.from(this.$el.children)
-     childNodes.forEach((ele,index)=>{
-       if(activeIndex===0 && index === childNodes.length-1) {
+      childNodes.forEach((ele,index)=>{
+        if(activeIndex===0 && index === childNodes.length-1) {
           ele.style.transition='0.5s'
-           muti=1
+          muti=1
         } else if(activeIndex===childNodes.length-1 && index === 0) {
           ele.style.transition='0s'
           muti=-1
@@ -83,19 +85,6 @@ offsetWidth(){
         ele.style.transform=`translateY(${-offsetHeight}px)`
       }) 
     },
-  },
-    mounted(){
-      // this.$nextTick(()=>{
-      // console.log(this.$el.offsetHeight)
-      // })
-    this.setTimer()
-    this.setItemPosition()
-   var ro = new ResizeObserver( entries => {
-  for (let entry of entries) {
-  this.setItemPosition()
-  }
-});
-  ro.observe(this.$el);
   },
 }
 

@@ -69,7 +69,91 @@
         <p class="desc">支付/缴费/优质理财/大额理财</p>
         <div class="btn">开启送礼包</div>
       </div>
+      <div class="group">
+        <p class="group-title">稳健灵活 小白精选</p>
+        <slider
+          :slide-data="choicenessData"
+          :space-between="8"
+          mode="freeMode"
+          custom="true"
+        >
+          <div slot-scope="props" class="slider-item">
+            <p class="title">{{ props.data.title }}</p>
+            <p class="label">{{ props.data.label }}</p>
+            <p class="value">{{ props.data.value }}</p>
+            <p class="desc">{{ props.data.desc }}</p>
+          </div>
+        </slider>
+      </div>
+      <div class="group">
+        <p class="group-title">银行+ 银行服务精选</p>
+        <slider
+          :slide-data="bankData"
+          mode="freeMode"
+        ></slider>
+      </div>
     </panel>
+    <panel
+      title="京东众筹"
+      more="好生活 享品质"
+      mode="left">
+      <left-right
+        :data="crowdFundingData"
+        mode="recommand">
+      </left-right>
+    </panel>
+    <panel
+      title="保险保障"
+      mode="left">
+      <left-right
+        :data="insuranceData"
+        mode="recommand">
+      </left-right>
+      <img style="margin-left:-4.6875vw;width:100vw" src="https://img12.360buyimg.com/jrpmobile/jfs/t23077/226/690093553/30932/c921216b/5b3df33fN6a7676ea.jpg?width=750&height=200" alt="">
+      <div class="group">
+        <p class="group-title">热销保险</p>
+        <slider
+          :slide-data="
+            [
+              {
+                url:'https://img12.360buyimg.com/jrpmobile/jfs/t21862/243/1993479769/20002/1d5ca6c5/5b440d1fNca3be19a.jpg?width=210&height=260'
+              },
+              {
+                url:'https://img12.360buyimg.com/jrpmobile/jfs/t23614/362/828401890/12518/35712ec5/5b440d34Ncf587248.jpg?width=210&height=260'
+              },
+              {
+                url:'https://img12.360buyimg.com/jrpmobile/jfs/t21445/320/1086137013/19781/786cbe42/5b1f9a3bN7f56be28.jpg?width=210&height=260'
+              }
+          ]"
+          mode="freeMode"
+        ></slider>
+      </div>
+      <img style="width:100vw;margin-left:-4.6875vw;margin-top:3.125vw" src="https://img12.360buyimg.com/jrpmobile/jfs/t19756/137/1902911799/17823/e19ffe7b/5add9511Nf6984e89.jpg?width=750&height=200" alt="">
+    </panel>
+    <panel
+      more="年轻不留白"
+      title="白条"
+      mode="left">
+      <left-right
+        :data="whiteBarData"
+        mode="circle"
+      >
+      </left-right>
+      <img class="img-adjust" src="https://img12.360buyimg.com/jrpmobile/jfs/t20746/93/1719082958/12040/306a2296/5b31b40dNeefe4c3c.png?width=750&height=200" alt="">
+    </panel>
+    <panel
+      :bottom="0"
+      title="特色推荐"
+      mode="left"  
+      no-padding="true">
+      <merchandise
+        :data="merchandiseData"></merchandise>
+      <p class="statement">-   京东金融出品  -</p>
+
+    </panel>
+    <div class="ghost-btn">
+      <img src="https://img12.360buyimg.com/jrpmobile/jfs/t22375/177/2057445461/7391/824012b3/5b45a8e9Nfb312099.gif?width=150&height=150" alt="">
+    </div>
   </div>
 </template>
 
@@ -77,12 +161,16 @@
 import Slider from './components/Slider.vue';
 import Panel from './components/Panel.vue';
 import VerticalSlider from './components/VerticalSlider.vue';
+import leftRight from './components/leftRight.vue';
+import merchandise from './components/merchandise.vue';
 
 export default {
   components: {
     Slider,
     Panel,
     VerticalSlider,
+    leftRight,
+    merchandise,
   },
   data() {
     return {
@@ -101,7 +189,7 @@ export default {
         },
       ],
       columnSliderData: [
-           {
+        { 
           url:
             'https://img12.360buyimg.com/jrpmobile/jfs/t21733/190/1884563179/11215/e8d7ee16/5b3c71abN86934de2.jpg?width=160&height=160',
           desc: '268元买赠 限量爱心项链',
@@ -117,6 +205,161 @@ export default {
           desc: '58元超值抢 健康精品柿房茶',
         },
       ],
+      choicenessData:[
+        {
+          title:'月月盈1',
+          label:'金融专享',
+          value:'4.70%',
+          desc:'近七日年化收益率',
+        },
+        {
+          title:'月月盈2',
+          label:'金融专享',
+          value:'4.70%',
+          desc:'近七日年化收益率',
+        },
+        {
+          title:'月月盈3',
+          label:'金融专享',
+          value:'4.70%',
+          desc:'近七日年化收益率',
+        },
+        {
+          title:'月月盈4',
+          label:'金融专享',
+          value:'4.70%',
+          desc:'近七日年化收益率',
+        },
+      ],
+      bankData:[
+        {
+          url:'https://img12.360buyimg.com/jrpmobile/jfs/t20638/45/788293331/14111/511b55b0/5b17a30dN687a4335.png?width=210&height=260',
+        },
+        {
+          url:'https://img12.360buyimg.com/jrpmobile/jfs/t20938/65/1799990374/14680/89fc64f3/5b3618ddNe01d7d8d.png?width=210&height=260',
+        },
+        {
+          url:'https://img12.360buyimg.com/jrpmobile/jfs/t20842/183/774592744/14888/e33804ee/5b17a32aN2482a649.png?width=210&height=260',
+        },
+      ],
+      crowdFundingData:{
+        value:'0.01元',
+        desc:'抢好物',
+        button:'立即抢购',
+        icon:[
+          {
+            url:'https://img12.360buyimg.com/jrpmobile/jfs/t9739/355/2223965438/3092/b3cc4062/59f2fef3Nc2363e64.png?width=56&height=56',
+            desc:'京东出众',
+          },
+          {
+            url:'https://img12.360buyimg.com/jrpmobile/jfs/t10882/187/2325566882/2968/e64c911c/59f2ff2cNd85eb522.png?width=56&height=56',
+            desc:'手机优惠',
+          },
+          {
+            url:'https://img12.360buyimg.com/jrpmobile/jfs/t11674/229/560588342/2307/d88f9fd7/59f2ff5eNcac8d195.png?width=56&height=56',
+            desc:'领神券',
+          },
+          {
+            url:'https://img12.360buyimg.com/jrpmobile/jfs/t10018/213/2260133396/2902/107476f0/59f2ff70N35c5d0bb.png?width=56&height=56',
+            desc:'智能首发',
+          },
+          {
+            url:'https://img12.360buyimg.com/jrpmobile/jfs/t7552/255/3352153359/2695/fc610922/59f2ff88N95232a40.png?width=56&height=56',
+            desc:'舌尖美味',
+          },
+          {
+            url:'https://img12.360buyimg.com/jrpmobile/jfs/t9523/348/2258037555/2792/9e8e1a80/59f2ff9fNf9648450.png?width=56&height=56',
+            desc:'轻时尚',
+          },
+        ],
+      },
+      insuranceData:{
+        value:'135万',
+        desc:'健康意外财产',
+        button:'免费领取',
+        icon:[
+          {
+            url:'https://img12.360buyimg.com/jrpmobile/jfs/t8881/304/1359242815/2540/5ef07179/59b90050N62f41061.png?width=56&height=56',
+            desc:'京东出众',
+          },
+          {
+            url:'https://img12.360buyimg.com/jrpmobile/jfs/t9040/57/2313007861/3024/82c36c44/59ca556eNb605e901.png?width=56&height=56',
+            desc:'手机优惠',
+          },
+          {
+            url:'https://img12.360buyimg.com/jrpmobile/jfs/t9283/283/1383600733/3117/82a51164/59b900cfNe88db318.png?width=56&height=56',
+            desc:'领神券',
+          },
+          {
+            url:'https://img12.360buyimg.com/jrpmobile/jfs/t8929/33/1393593833/1749/1e115bd7/59b900e6N73c7b311.png?width=56&height=56',
+            desc:'智能首发',
+          },
+          {
+            url:'https://img12.360buyimg.com/jrpmobile/jfs/t8902/275/1411242449/2807/a2cc902a/59b90111N4e88098c.png?width=56&height=56',
+            desc:'舌尖美味',
+          },
+          {
+            url:'https://img12.360buyimg.com/jrpmobile/jfs/t8962/170/1384497943/2594/aa2a2ad9/59b9011bNf3b01bea.png?width=56&height=56',
+            desc:'轻时尚',
+          },
+        ],
+      },
+      whiteBarData:{
+        desc:'小白信用分',
+        button:'登录查看',
+        icon:[
+          {
+            url:'https://img12.360buyimg.com/jrpmobile/jfs/t8803/130/802395570/1891/103bedf1/59af980eN987fd5c2.png?width=56&height=56',
+            desc:'白条',
+          },
+          {
+            url:'https://img12.360buyimg.com/jrpmobile/jfs/t9373/154/878445473/2758/410dc92d/59b901f5Nc93edaac.png?width=56&height=56',
+            desc:'手机优惠',
+          },
+          {
+            url:'https://img12.360buyimg.com/jrpmobile/jfs/t9391/169/1385525558/2762/2d29f1d5/59b90214N4f745107.png?width=56&height=56',
+            desc:'领神券',
+          },
+          {
+            url:'https://img12.360buyimg.com/jrpmobile/jfs/t7246/167/3036813324/1578/d4ae001e/59b90228Nd61b6465.png?width=56&height=56',
+            desc:'智能首发',
+          },
+          {
+            url:'https://img12.360buyimg.com/jrpmobile/jfs/t8422/203/1374629409/2823/430e740d/59b90230N09140aba.png?width=56&height=56',
+            desc:'舌尖美味',
+          },
+          {
+            url:'https://img12.360buyimg.com/jrpmobile/jfs/t7618/313/3082994165/3330/e1692006/59b90247Nac3c9ebe.png?width=56&height=56',
+            desc:'轻时尚',
+          },
+        ],
+      },
+      merchandiseData:[
+        {
+          url:'http://img30.360buyimg.com/cf/jfs/t22861/119/752192056/87303/fd6501a4/5b3f47f3Na600befd.jpg!q70.dpg',
+          title:'狼人杀官方卡牌2018',
+          price:'48.00',
+          progressValue:'109',
+        },
+        {
+          url:'http://img30.360buyimg.com/cf/jfs/t21241/263/1943181480/40184/638a58a3/5b42d4ccN30853b05.jpg!q70.dpg',
+          title:'唯生活3万透气孔超干爽内裤',
+          price:'99.00',
+          progressValue:'9999',
+        },
+        {
+          url:'http://img30.360buyimg.com/cf/jfs/t20068/277/1805261234/84298/4d082d3/5b271407Nda85af5b.jpg!q70.dpg',
+          title:'1布去车漆刮痕-划痕传奇布',
+          price:'48.00',
+          progressValue:'65',
+        },
+        {
+          url:'http://img30.360buyimg.com/cf/jfs/t21226/276/389169737/65406/752a3c16/5b0bb9b7N25a30e47.jpg!q70.dpg',
+          title:'手机膜法传奇-1擦秒变新机',
+          price:'48.00',
+          progressValue:'65',
+        },
+      ],
     };
   },
 };
@@ -125,6 +368,7 @@ export default {
 <style lang="scss" scoped>
 @import "./scss/mixin.scss";
 .make-money {
+  overflow: hidden;
   .fixed-img {
     position: fixed;
     top: 45px;
@@ -265,7 +509,6 @@ export default {
     }
   }
   .xjk {
-    padding: 0 15px;
     .wrap {
       color: #fff;
       height: 100px;
@@ -319,5 +562,77 @@ export default {
       }
     }
   }
+  .group {
+    .group-title {
+      height: 50px;
+      line-height: 50px;
+      font-size: 14px;
+      background: #fff;
+    }
+    .swiper-slide {
+      width: 105px !important;
+      height: 130px !important;
+    }
+    .slider-item {
+      margin: -2px 0;
+      padding: 2px 15px;
+      box-sizing: border-box;
+      height: 130px;
+      box-shadow: 0 0 0.625rem 0.03125rem rgba(101, 118, 155, 0.15);
+      // background: #fff;
+      // width: 105px;
+
+      .title {
+        font-size: 16px;
+        font-family: PingFangSC-Semibold;
+        padding: 19px 0 5px 0;
+        border-radius: 2px;
+      }
+      .label {
+        color: #fff;
+        font-size: 10px;
+        border-radius: 11px;
+        background-image: linear-gradient(#5e8fff, #2f6fff);
+        min-width: 50px;
+        text-align: center;
+        display: inline-block;
+        height: 16px;
+        line-height: 16px;
+      }
+      .value {
+        font-size: 25px;
+        font-family: "DIN--BOLD";
+        height: 30px;
+        line-height: 30px;
+        color: red;
+      }
+      .desc {
+        font-size: 10px;
+        color: #999;
+        padding-top: 4px;
+      }
+    }
+  }
+}
+.img-adjust {
+  width: 100vw;
+  margin-left: -4.6875vw;
+  margin-top: 3.125vw;
+}
+.statement {
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
+  font-size: 10px;
+  color: #b1b4bb;
+  background: #f3f5f7;
+}
+.ghost-btn {
+  height: 50px;
+  width: 50px;
+  position: fixed;
+  right: 16px;
+  bottom: 138px;
+  z-index: 999;
 }
 </style>

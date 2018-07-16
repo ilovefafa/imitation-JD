@@ -163,12 +163,7 @@
 <script>
 import Slider from './components/Slider.vue';
 import Panel from './components/Panel.vue';
-import {square} from '.././utils/math.js';
 export default {
-  mounted(){
-let a = square(3)
-return a
-  },
   components: {
     Slider,
     Panel,
@@ -227,6 +222,9 @@ return a
       ],
     };
   },
+  mounted(){
+
+  },
 };
 </script>
 
@@ -254,19 +252,19 @@ return a
           float: left;
           &:nth-child(1) {
             &:before {
-              content: '';
+              content: "";
               padding-left: 0;
             }
           }
           &:before {
-            content: '|';
+            content: "|";
             padding: 0 5px;
           }
         }
       }
       .img {
         position: absolute;
-        background: url('//m.jr.jd.com/spe/qyy/main/images/jr-logo.png')
+        background: url("https://m.jr.jd.com/spe/qyy/main/images/jr-logo.png")
           no-repeat no-repeat center center;
         background-size: 100%;
         width: 105px;
@@ -336,7 +334,7 @@ return a
       position: relative;
       &:nth-child(odd) {
         &::after {
-          content: '';
+          content: "";
           width: 1px;
           height: 68px;
           background-color: #eee;
@@ -454,7 +452,7 @@ return a
           position: absolute;
           left: 0;
           top: 0;
-          content: '';
+          content: "";
           display: block;
           height: 1px;
           width: 200%;

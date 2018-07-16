@@ -19,10 +19,14 @@ export default {
     BottomNav,
   },
   mounted(){
-  selfAdaption()
-  }
+    selfAdaption()
+  },
 }
 </script>
 
 <style lang='scss' scoped>
+.main {
+  overflow-x: hidden;
+  width: 100%;
+}
 </style>

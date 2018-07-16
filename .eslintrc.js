@@ -14,6 +14,7 @@ module.exports = {
         "vue/html-self-closing": ["never"],
         "vue/require-prop-types": ["never"],
         "vue/max-attributes-per-line": ["never"],
+        "vue/require-default-prop": ["never"],
         // "prettier/prettier": ["error", {
         //     "trailingComma": "all",
         //     "singleQuote": true
