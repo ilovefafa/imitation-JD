@@ -1,5 +1,8 @@
 ## 预览
-[点击预览](http://yinengdk.com/dist/index.html#/),需使用开发者移动端模式观看。
+- [点击预览](http://yinengdk.com/dist/index.html#/),需使用开发者移动端模式观看。
+- 仿造网站
+https://mjr.jd.com/ 。
+
 ## 手机端扫描二维码
 <!-- ![](./QR.png) -->
 <img width="150" height="150" src="./QR.png"/>
